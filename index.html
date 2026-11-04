@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101114" />
+  <title>APEX / Уличные гонки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="APEX"><span class="brand-mark">A</span><span>APEX<span class="brand-sub">MOTOR CLUB</span></span></a>
+      <div class="profile"><div class="avatar">М</div><div><b>Пилот</b><span>НОВИЧОК · УР. 04</span></div><i class="online-dot"></i></div>
+      <nav class="main-nav" aria-label="Главное меню">
+        <button class="nav-item active" data-view="garage"><span class="nav-icon">◈</span> Гараж <span class="nav-count">01</span></button>
+        <button class="nav-item" data-view="race"><span class="nav-icon">⌁</span> Гонки <span class="nav-count">03</span></button>
+        <button class="nav-item" data-view="tuning"><span class="nav-icon">⚙</span> Тюнинг <span class="nav-count">↗</span></button>
+      </nav>
+      <div class="side-bottom"><div class="season-card"><div class="season-tag">СЕЗОН 01 <span>● АКТИВЕН</span></div><div class="season-title">НОЧНОЙ<br>ЗАЕЗД</div><div class="season-progress"><i></i></div><div class="season-foot"><span>РЕПУТАЦИЯ</span><b>1 240 / 2 000</b></div></div><button class="settings-btn" id="soundToggle"><span>♫</span> ЗВУК <b>ВКЛ</b></button><div class="version">APEX MOTOR CLUB <span>v1.0.4</span></div></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumb"><span>КЛУБ</span><b>/</b><strong id="crumbTitle">ГАРАЖ</strong></div><div class="top-actions"><div class="weather"><span class="weather-icon">◒</span><span>НОЧЬ <small>18°</small></span></div><div class="balance"><span class="coin">₽</span><span id="balance">250 000</span><small>₽</small></div><button class="icon-btn" id="helpBtn" aria-label="Справка">?</button></div></header>
+      <section id="garageView" class="view active">
+        <div class="hero-heading"><div><div class="eyebrow"><i></i> ТВОЯ КОЛЛЕКЦИЯ</div><h1>ГАРАЖ<span class="heading-period">.</span></h1></div><div class="garage-count"><span id="carCount">01</span><small> / 05 МАШИН</small></div></div>
+        <div class="garage-layout">
+          <div class="showroom">
+            <div class="showroom-top"><span class="location-label"><i></i> БОКС 01 · МОСКВА</span><div class="scene-control"><button id="rotateBtn" class="scene-btn active" title="Вращение">⟳</button><button id="lightBtn" class="scene-btn" title="Свет">☼</button><button id="fullscreenBtn" class="scene-btn" title="На весь экран">⛶</button></div></div>
+            <div id="sceneWrap" class="scene-wrap"><canvas id="gameCanvas" aria-label="3D модель автомобиля"></canvas><div class="scene-vignette"></div><div class="car-label"><span id="carClass">КЛАСС A</span><b id="carName">ВОЛЬТ SPRINT</b><small id="carEngine">2.0L TURBO · 276 Л.С.</small></div><div class="scene-hint" id="sceneHint">ПЕРЕТАЩИ, ЧТОБЫ ОСМОТРЕТЬ</div><div class="scene-loading" id="sceneLoading"><span></span> ЗАГРУЗКА 3D СЦЕНЫ</div></div>
+            <div class="car-selector" id="carSelector"></div>
+            <div class="car-actions"><button class="primary-btn" data-open="tuning"><span>⚙</span> НАСТРОИТЬ МАШИНУ <b>→</b></button><button class="secondary-btn" data-open="race"><span>▶</span> ВЫЕХАТЬ НА ТРЕК</button></div>
+          </div>
+          <div class="car-info-panel"><div class="panel-kicker">ТВОЯ МАШИНА <span id="carNumber">01 / 05</span></div><h2 id="infoName">ВОЛЬТ<br>SPRINT</h2><p class="car-description" id="carDescription">Лёгкий и отзывчивый городской спринтер. Идеальный выбор, чтобы начать путь к вершине.</p><div class="spec-list"><div class="spec-row"><span>МОЩНОСТЬ</span><b><span id="powerVal">276</span> <small>Л.С.</small></b><div class="spec-bar"><i id="powerBar"></i></div></div><div class="spec-row"><span>РАЗГОН 0–100</span><b><span id="accelVal">5.4</span> <small>СЕК</small></b><div class="spec-bar"><i id="accelBar"></i></div></div><div class="spec-row"><span>МАКС. СКОРОСТЬ</span><b><span id="speedVal">248</span> <small>КМ/Ч</small></b><div class="spec-bar"><i id="speedBar"></i></div></div><div class="spec-row"><span>УПРАВЛЯЕМОСТЬ</span><b><span id="handlingVal">72</span> <small>%</small></b><div class="spec-bar"><i id="handlingBar"></i></div></div></div><div class="panel-divider"></div><div class="installed-title">УСТАНОВЛЕНО <span>ИЗМЕНИТЬ →</span></div><div class="installed-grid" id="installedGrid"></div><div class="collection-nav"><button id="prevCar">← ПРЕДЫДУЩАЯ</button><button id="nextCar">СЛЕДУЮЩАЯ →</button></div></div>
+        </div>
+        <div class="bottom-strip"><div><span class="strip-icon">⌖</span><span><b>ГОТОВ К СТАРТУ?</b><small>Три трассы ждут своего чемпиона</small></span></div><button data-open="race">ВЫБРАТЬ ЗАЕЗД <b>↗</b></button><span class="strip-decoration">APEX / 01</span></div>
+      </section>
+
+      <section id="raceView" class="view">
+        <div class="hero-heading"><div><div class="eyebrow"><i></i> ВЫБЕРИ СВОЙ МАРШРУТ</div><h1>ГОНОЧНЫЙ КЛУБ<span class="heading-period">.</span></h1></div><div class="garage-count"><span>03</span><small> ТРАССЫ</small></div></div>
+        <div class="race-layout"><div class="track-list" id="trackList"></div><div class="race-preview"><div class="preview-tag">СЛЕДУЮЩИЙ ЗАЕЗД <i>● ОТКРЫТ</i></div><div id="trackPreviewArt" class="track-art art-city"><div class="art-sun"></div><div class="art-road"></div><div class="art-cityline"></div><span class="art-label">01 / МОСКВА</span></div><div class="race-detail"><div><span class="eyebrow">ТВОЯ МАШИНА</span><h2 id="raceCarName">ВОЛЬТ SPRINT</h2></div><div class="race-reward"><span>НАГРАДА ЗА ПОБЕДУ</span><b>+ <i>₽</i> <span id="raceReward">35 000</span></b></div></div><button class="primary-btn race-start" id="startRace"><span>▶</span> НАЧАТЬ ЗАЕЗД <b>→</b></button><div class="race-tip">⌨ УПРАВЛЕНИЕ: <b>W / ↑</b> газ · <b>S / ↓</b> тормоз · <b>A D / ← →</b> поворот</div></div></div>
+      </section>
+
+      <section id="tuningView" class="view"><div class="hero-heading"><div><div class="eyebrow"><i></i> МАСТЕРСКАЯ APEX</div><h1>ТЮНИНГ<span class="heading-period">.</span></h1></div><div class="tuning-car-pill"><span>МАШИНА</span><b id="tuningCarName">ВОЛЬТ SPRINT</b><button data-open="garage">СМЕНИТЬ ↗</button></div></div><div class="tuning-layout"><aside class="tuning-categories" id="tuningCategories"></aside><div class="parts-area"><div class="parts-heading"><div><span class="eyebrow" id="partsEyebrow">УЛУЧШЕНИЕ ХАРАКТЕРИСТИК</span><h2 id="partsTitle">ДВИГАТЕЛЬ</h2></div><div class="sort-label">ПОДХОДИТ К ТВОЕЙ МАШИНЕ <i>✓</i></div></div><div class="parts-grid" id="partsGrid"></div><div class="tuning-note"><span>ⓘ</span> <span>Установка детали изменит характеристики автомобиля. Каждая покупка сохраняется в твоём гараже.</span></div></div></div></section>
+
+      <section id="raceGameView" class="view race-game-view"><div id="raceScene" class="race-scene"><canvas id="raceCanvas"></canvas><div class="race-hud-top"><button class="hud-exit" id="quitRace">✕ <span>ВЫЙТИ ИЗ ГОНКИ</span></button><div class="race-map-name" id="hudTrackName">МОСКВА · НОЧНОЙ КРУГ</div><div class="race-pos"><b id="position">1</b><span>ПОЗИЦИЯ</span><small>/ 4</small></div></div><div class="race-countdown" id="countdown"></div><div class="race-hud-bottom"><div class="race-progress"><span>КРУГ <b id="lapNumber">1</b><small> / 2</small></span><div class="progress-track"><i id="raceProgress"></i><div id="opponentDots"></div></div><span id="raceTime">00:00.0</span></div><div class="speedometer"><div><b id="speedometer">000</b><small>KM/H</small></div><span class="gear-label">ПЕРЕДАЧА <b id="gearLabel">1</b></span><span class="rpm-bar"><i id="rpmBar"></i></span></div><div class="race-controls"><span>W / ↑ <b>ГАЗ</b></span><span>S / ↓ <b>ТОРМОЗ</b></span><span>A D <b>ПОВОРОТ</b></span><span>ПРОБЕЛ <b>НИТРО</b></span></div></div><div class="race-result" id="raceResult"><div class="result-card"><span class="eyebrow">ЗАЕЗД ЗАВЕРШЁН</span><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultSubtitle">Отличная гонка. Город теперь твой.</p><div class="result-reward">НАГРАДА <b>+ ₽ <span id="resultMoney">35 000</span></b></div><button class="primary-btn" id="resultContinue">В ГАРАЖ <b>→</b></button></div></div></div></section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop" id="modalBackdrop"><div class="modal"><button class="modal-close" id="modalClose">×</button><div class="eyebrow">APEX MOTOR CLUB</div><h2>ПЕРВЫЙ ЗАЕЗД — ЗА НАМИ</h2><p>Добро пожаловать в клуб. На счету уже есть <b>250 000 ₽</b> — хватит, чтобы собрать машину мечты. Побеждай в гонках, зарабатывай и открывай новые детали.</p><div class="modal-tip"><span>WASD</span> Управление автомобилем <span>ПРОБЕЛ</span> Нитро <span>ESC</span> Выйти</div><button class="primary-btn" id="modalOkay">ПОНЯТНО, ПОЕХАЛИ <b>→</b></button></div></div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
