@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d12" />
+  <link rel="icon" href="data:," />
+  <title>ГОНКА — уличный автоспорт</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Главная"><span class="brand-mark">R</span><span>REDLINE<span class="brand-light"> / GARAGE</span></span></a>
+      <nav class="main-nav" aria-label="Главное меню">
+        <button class="nav-item active" data-view="garage">Гараж</button>
+        <button class="nav-item" data-view="tuning">Тюнинг</button>
+        <button class="nav-item" data-view="race">Гонки</button>
+      </nav>
+      <div class="top-right"><div class="wallet"><span class="coin">₽</span><span id="balance">125 000</span></div><button class="sound-toggle" id="soundToggle" aria-label="Звук включён">♫</button><button class="avatar">И</button></div>
+    </header>
+
+    <main>
+      <section class="view active" id="garageView">
+        <div class="garage-stage" id="garageStage">
+          <div class="stage-grid"></div><div class="stage-glow"></div>
+          <div class="stage-caption"><span class="eyebrow"><i class="live-dot"></i> ТВОЙ ГАРАЖ · МОСКВА</span><h1 id="carName">VORTEX <em>R</em></h1><p id="carTagline">Хищник городских улиц</p></div>
+          <div class="car-art-wrap"><canvas id="carCanvas" aria-label="Вид автомобиля"></canvas><div class="floor-shadow"></div></div>
+          <div class="stage-bottom"><div class="car-count"><span id="carIndex">01</span><span class="count-line"></span><span>05</span><span class="count-label">МОЙ АВТОПАРК</span></div><div class="stage-controls"><button class="circle-btn" id="prevCar" aria-label="Предыдущая машина">←</button><button class="circle-btn" id="nextCar" aria-label="Следующая машина">→</button></div></div>
+          <div class="stage-chip"><span class="chip-label">КЛАСС</span><strong id="carClass">S · СПОРТ</strong></div>
+        </div>
+        <div class="garage-lower">
+          <div class="spec-card">
+            <div class="card-head"><div><span class="eyebrow">ТЕКУЩАЯ СБОРКА</span><h2>Характеристики</h2></div><span class="engine-label"><i></i><span id="engineName">2.0L TURBO</span></span></div>
+            <div class="stat-grid"><div class="stat"><div class="stat-top"><span>МОЩНОСТЬ</span><b id="powerNum">420 <small>л.с.</small></b></div><div class="meter"><i id="powerBar" style="width:57%"></i></div></div><div class="stat"><div class="stat-top"><span>УСКОРЕНИЕ</span><b id="accelNum">3.8 <small>сек</small></b></div><div class="meter"><i id="accelBar" style="width:68%"></i></div></div><div class="stat"><div class="stat-top"><span>УПРАВЛЕНИЕ</span><b id="handlingNum">78 <small>/ 100</small></b></div><div class="meter"><i id="handlingBar" style="width:78%"></i></div></div><div class="stat"><div class="stat-top"><span>МАКС. СКОРОСТЬ</span><b id="speedNum">285 <small>км/ч</small></b></div><div class="meter"><i id="speedBar" style="width:72%"></i></div></div></div>
+            <div class="spec-footer"><span><span class="keycap">R</span> ЗВУК ДВИГАТЕЛЯ</span><span id="soundProfile">ГЛУБОКИЙ · ГРОМКИЙ</span><button class="mini-play" id="revButton" title="Послушать двигатель">▶</button></div>
+          </div>
+          <aside class="garage-actions"><div class="next-race-card"><div class="race-card-top"><span class="eyebrow">СЛЕДУЮЩИЙ ЗАЕЗД</span><span class="race-tag">НОВОЕ</span></div><h3 id="nextTrackName">НОЧНОЕ КОЛЬЦО</h3><div class="race-meta"><span>◷ &nbsp;3 КРУГА</span><span>♧ &nbsp;5 СОПЕРНИКОВ</span></div><button class="primary-btn" id="quickRace">НА СТАРТ <span>↗</span></button></div><button class="secondary-btn" id="openTuning"><span class="wrench-icon">⌁</span> МАСТЕРСКАЯ <span class="arrow">→</span></button><div class="tip-line"><span class="tip-icon">✦</span> Побеждай в гонках и собирай свою легенду</div></aside>
+        </div>
+      </section>
+
+      <section class="view tuning-view" id="tuningView">
+        <div class="tuning-header"><div><span class="eyebrow"><i class="live-dot"></i> МАСТЕРСКАЯ · РАБОТАЕМ ДО РАССВЕТА</span><h1>СОЗДАЙ СВОЙ <em>ХАРАКТЕР</em></h1><p>Каждая деталь меняет ощущения. И звучит по-новому.</p></div><button class="back-link" id="backGarage">← В ГАРАЖ</button></div>
+        <div class="tuning-layout"><aside class="tuning-sidebar"><div class="workshop-car"><canvas id="tuneCanvas"></canvas><div><strong id="tuneCarName">VORTEX R</strong><span>АКТИВНАЯ СБОРКА</span></div></div><div class="category-title">КАТАЛОГ ДЕТАЛЕЙ <span>06</span></div><div class="category-list" id="categoryList"></div><div class="tuning-note"><span>◈</span><div><b>Совет механика</b><p>Собери гармоничную конфигурацию — некоторые детали усиливают друг друга.</p></div></div></aside><div class="parts-panel"><div class="parts-heading"><div><span class="eyebrow" id="categoryEyebrow">СИЛОВАЯ УСТАНОВКА</span><h2 id="categoryTitle">Двигатель</h2></div><div class="sort-label">СОВМЕСТИМОСТЬ <span>100%</span></div></div><div class="parts-grid" id="partsGrid"></div></div></div>
+      </section>
+
+      <section class="view race-view" id="raceView">
+        <div class="race-hud-top"><div class="race-title"><span class="eyebrow"><i class="live-dot"></i> ЧЕМПИОНАТ REDLINE</span><h1 id="raceTrackTitle">НОЧНОЕ КОЛЬЦО</h1></div><div class="race-countdown" id="countdown"><span>ГОТОВЬСЯ</span><strong id="countNum">3</strong></div><div class="race-position"><span>ПОЗИЦИЯ</span><strong id="position">06<span> / 06</span></strong></div></div>
+        <div class="race-scene" id="raceScene"><canvas id="raceCanvas"></canvas><div class="cinematic" id="cinematic"><div class="cine-line"></div><span>REDLINE RACING PRESENTS</span><h2 id="cineName">НОЧНОЕ КОЛЬЦО</h2><p>МОСКВА · 3 КРУГА · 6 ПИЛОТОВ</p></div><div class="race-toast" id="raceToast"></div><div class="race-overlay"><div class="lap-indicator">КРУГ <strong id="lapNumber">1</strong><span> / 3</span></div><div class="speedometer"><div class="speed-value"><strong id="speedValue">000</strong><span>КМ/Ч</span></div><div class="gear-display"><span>ПЕРЕДАЧА</span><b id="gearValue">N</b></div></div><div class="race-progress"><span>СТАРТ</span><div><i id="progressBar"></i></div><span>ФИНИШ</span></div></div></div>
+        <div class="race-bottom"><div class="race-hint"><span>W / ↑ ГАЗ</span><span>A D ПОВОРОТ</span><span>ПРОБЕЛ ТОРМОЗ</span></div><div class="gear-panel"><span class="gear-label">РУЧНАЯ КПП</span><button id="gearDown" aria-label="Понизить передачу">−</button><div><strong id="panelGear">N</strong><span id="gearName">НЕЙТРАЛЬ</span></div><button id="gearUp" aria-label="Повысить передачу">+</button></div><button class="quit-race" id="quitRace">ВЫЙТИ ИЗ ГОНКИ</button></div>
+        <div class="touch-controls"><button class="steer touch-btn" id="touchLeft">◀</button><div class="pedals"><button class="brake touch-btn" id="touchBrake">ТОРМОЗ</button><button class="accelerate touch-btn" id="touchGas">ГАЗ</button></div><button class="steer touch-btn" id="touchRight">▶</button></div>
+        <div class="result-modal" id="resultModal"><div class="result-card"><span class="eyebrow">ЗАЕЗД ЗАВЕРШЁН</span><div class="result-medal">✦</div><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultText">Ты первым пересёк финишную линию.</p><div class="reward-line"><span>НАГРАДА</span><b id="rewardValue">+₽ 25 000</b></div><button class="primary-btn" id="collectReward">ЗАБРАТЬ НАГРАДУ <span>↗</span></button><button class="secondary-btn" id="raceAgain">ЕЩЁ ОДИН ЗАЕЗД <span>↻</span></button></div></div>
+      </section>
+    </main>
+    <footer class="footer"><span>REDLINE MOTOR CLUB <i>© 2025</i></span><span>СДЕЛАНО ДЛЯ ТЕХ, КТО СЛЫШИТ ДОРОГУ <b>◈</b></span></footer>
+  </div>
+  <div class="install-hint" id="installHint">Поверни телефон для лучшего обзора</div>
+  <script src="game.js"></script>
+</body>
+</html>
