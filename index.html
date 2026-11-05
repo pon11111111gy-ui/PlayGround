@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101114" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <title>ГРАНЬ — уличные гонки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Грань — главная"><span class="brand-mark">Г</span><span>ГРАНЬ<span class="brand-sub">УЛИЧНЫЕ ГОНКИ</span></span></a>
+      <nav class="main-nav"><button class="nav-item active" data-screen="garage">Гараж</button><button class="nav-item" data-screen="tuning">Тюнинг</button><button class="nav-item" data-screen="race">Гонки</button></nav>
+      <div class="wallet"><span class="wallet-icon">₽</span><div><small>БАЛАНС</small><strong id="balance">125 000</strong></div><span class="wallet-plus">+</span></div>
+      <button class="menu-button" id="menuButton" aria-label="Меню"><i></i><i></i></button>
+    </header>
+
+    <main>
+      <section id="garageScreen" class="screen active">
+        <div class="garage-grid">
+          <aside class="garage-aside">
+            <div class="eyebrow"><span class="live-dot"></span> ГАРАЖ · МОСКВА</div>
+            <h1>ТВОЯ<br><em>МАШИНА.</em></h1>
+            <p class="lead">Собери характер. Настрой мощность. Забери улицы.</p>
+            <div class="car-selector" id="carSelector"></div>
+            <div class="car-count"><span id="carIndex">01</span><span class="count-line"></span><span>05</span><span class="count-label">АВТОМОБИЛИ В КОЛЛЕКЦИИ</span></div>
+            <button class="button button-primary wide" data-screen="tuning">ОТКРЫТЬ ТЮНИНГ <span>↗</span></button>
+          </aside>
+          <div class="showroom">
+            <div class="showroom-grid"></div><div class="showroom-glow"></div>
+            <div class="showroom-meta"><span id="carClass">КЛАСС · SPORT</span><span>01 / 05</span></div>
+            <canvas id="garageCanvas" aria-label="Вид автомобиля в гараже"></canvas>
+            <div class="car-title"><span id="carMake">NOVA</span><strong id="carName">R-86</strong><span class="car-year" id="carYear">2024</span></div>
+            <div class="showroom-floor"></div>
+            <div class="car-specs"><div><small>МОЩНОСТЬ</small><b id="powerValue">280 <i>л.с.</i></b><div class="spec-track"><span id="powerBar"></span></div></div><div><small>РАЗГОН 0–100</small><b id="accelValue">5.8 <i>сек</i></b><div class="spec-track"><span id="accelBar"></span></div></div><div><small>МАКС. СКОРОСТЬ</small><b id="speedValue">248 <i>км/ч</i></b><div class="spec-track"><span id="speedBar"></span></div></div></div>
+            <div class="rotate-hint">↻ <span>ПОТАЩИ, ЧТОБЫ ОСМОТРЕТЬ</span></div>
+          </div>
+        </div>
+        <div class="bottom-strip"><span>НОЧЬ · 18°C</span><span>СЕЗОН 01 <b>·</b> УЛИЧНАЯ ЛИГА</span><button data-screen="race">СЛЕДУЮЩАЯ ГОНКА <span>→</span></button></div>
+      </section>
+
+      <section id="tuningScreen" class="screen">
+        <div class="section-heading"><div><div class="eyebrow">МАСТЕРСКАЯ · 24/7</div><h2>СОЗДАЙ СВОЙ <em>ЗВУК.</em></h2></div><div class="garage-status"><span class="live-dot"></span> МАШИНА НА ПОДЪЁМНИКЕ <b id="tuningCarName">R-86</b></div></div>
+        <div class="tuning-layout">
+          <div class="tuning-car-panel"><div class="tuning-stage"><div class="lift-line"></div><canvas id="tuningCanvas"></canvas><div class="stage-label">ПРОЕКТ № <span>0084</span></div><button class="rotate-control" id="rotateCar">↻</button></div><div class="tuning-car-info"><div><small>ТЕКУЩАЯ СБОРКА</small><strong id="tuningBuildName">NOVA R-86</strong></div><div class="tuning-rating"><span>РЕЙТИНГ</span><b id="ratingValue">B <small>+2</small></b></div></div><div class="tuning-total"><span>ОБЩАЯ МОЩНОСТЬ</span><strong id="tuningPower">280 <i>л.с.</i></strong><div class="total-meter"><span id="totalMeter"></span></div></div></div>
+          <div class="tuning-shop"><div class="shop-top"><div><span class="eyebrow">КАТАЛОГ ДЕТАЛЕЙ</span><h3>ТЮНИНГ</h3></div><div class="shop-categories" id="categories"></div></div><div class="part-list" id="partList"></div><div class="shop-footer"><span>ДЕТАЛИ УСТАНАВЛИВАЮТСЯ В МАСТЕРСКОЙ</span><span>↗ ГАРАНТИЯ 12 МЕС.</span></div></div>
+        </div>
+      </section>
+
+      <section id="raceScreen" class="screen race-screen">
+        <div class="race-top"><div><div class="eyebrow"><span class="live-dot"></span> УЛИЧНАЯ ЛИГА · ЗАЕЗД № <span id="raceNumber">04</span></div><h2 id="trackTitle">НОЧНОЕ <em>КОЛЬЦО</em></h2></div><div class="race-track-picker" id="trackPicker"></div></div>
+        <div class="race-stage"><canvas id="raceCanvas"></canvas><div class="race-vignette"></div><div class="race-hud" id="raceHud"><div class="hud-position"><small>ПОЗИЦИЯ</small><strong id="positionHud">1<span>/5</span></strong></div><div class="hud-speed"><strong id="speedHud">000</strong><span>КМ/Ч</span><div class="rpm"><span id="rpmBar"></span></div><small>ОБОРОТЫ <b id="gearHud">N</b></small></div><div class="hud-lap"><small>ДИСТАНЦИЯ</small><strong><span id="distanceHud">0.0</span><i>км</i></strong><div class="race-progress"><span id="raceProgress"></span></div></div><div class="race-message" id="raceMessage"></div></div><div class="cinematic" id="cinematic"><span class="cinematic-kicker">УЛИЧНАЯ ЛИГА ПРЕДСТАВЛЯЕТ</span><strong id="cinematicTitle">НОЧНОЕ КОЛЬЦО</strong><span class="cinematic-sub">МОСКВА · 3 КРУГА · 5 УЧАСТНИКОВ</span><button class="button button-primary" id="startRace">НА СТАРТ <span>→</span></button></div><div class="finish-panel" id="finishPanel"><span class="eyebrow">ЗАЕЗД ЗАВЕРШЁН</span><h3 id="finishTitle">ПОБЕДА!</h3><div class="prize">+<strong id="prizeValue">25 000</strong> ₽</div><p id="finishSub">Ты оставил их позади.</p><button class="button button-primary" id="raceAgain">ЕЩЁ ЗАЕЗД <span>↻</span></button></div></div>
+        <div class="race-controls"><div class="control-help"><span>WASD / ← →</span> управление <span>SPACE</span> ручник</div><div class="touch-controls"><button id="leftControl" class="steer">←</button><button id="brakeControl" class="pedal">ТОРМОЗ</button><button id="rightControl" class="steer">→</button><button id="gasControl" class="pedal gas">ГАЗ</button></div><div class="race-utility"><button id="soundButton">♪ <span>ЗВУК ВКЛ</span></button><button id="exitRace">В ГАРАЖ&nbsp; ↗</button></div></div>
+      </section>
+    </main>
+    <div class="toast" id="toast"></div>
+    <div class="install-scene" id="installScene"><div class="install-card"><div class="install-head"><span class="eyebrow"><span class="live-dot"></span> МАСТЕРСКАЯ · УСТАНОВКА</span><button id="closeInstall" aria-label="Закрыть">×</button></div><div class="install-visual"><div class="engine-art" id="engineArt"><div class="engine-core"></div><div class="engine-part"></div><div class="bolt b1"></div><div class="bolt b2"></div><div class="bolt b3"></div><div class="bolt b4"></div><div class="wrench">🔧</div><div class="hood">КАПОТ</div></div><div class="install-beam"></div></div><div class="install-step" id="installStep">ПОДГОТОВКА РАБОЧЕГО МЕСТА</div><h3 id="installTitle">Установка детали</h3><p id="installDescription">Механик приступает к работе</p><div class="install-progress"><span id="installProgress"></span></div><div class="install-log" id="installLog"></div></div></div>
+    <div class="mobile-nav"><button class="active" data-screen="garage">⌂<span>Гараж</span></button><button data-screen="tuning">⚙<span>Тюнинг</span></button><button data-screen="race">◈<span>Гонки</span></button></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
